@@ -9,8 +9,8 @@ services:
             - 27017:27017
         volumes:
             - db:/data/db
-    app:
-        container_name: api
+    whatsapp_api:
+        container_name: whatsapp_api
         build:
             context: .
             dockerfile: Dockerfile
@@ -33,6 +33,10 @@ services:
         volumes:
             - ./:/home/node/app
             - /home/node/app/node_modules/
+networks:
+    default:
+        external:
+            name: brs-network
 
 volumes:
     db:
